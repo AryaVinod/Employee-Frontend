@@ -1,0 +1,21 @@
+import { FC } from 'react';
+import './Styles.css';
+
+type ButtonPropTypes = {
+  onClick: (evt) => void;
+  label: string;
+};
+
+const Button: FC<ButtonPropTypes> = (props) => {
+  return (
+    <div>
+      <div>
+        <button type='button' className='button' onClick={props.onClick}>
+          {props.label}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Button;
