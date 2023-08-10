@@ -1,0 +1,11 @@
+.header-container{
+    top: 0px;
+    margin-left: 0px;
+    width: calc(100% - 300px);
+    height: 77px;
+
+    /* UI Properties */
+
+    background: #7a87ce 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
