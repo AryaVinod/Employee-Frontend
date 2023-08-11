@@ -19,7 +19,8 @@ const Login: FC = () => {
   return (
     <div className='container'>
       <div className='left-container'>
-        <img className='banner' src='assets/img/banner.png' />
+        <img src='assets/img/banner.png' className='circle' />
+        {/* <img className='banner' src='assets/img/banner.png' /> */}
       </div>
       <div className='right-container'>
         <img className='logo' src='assets/img/kv-logo.png' />
@@ -41,7 +42,7 @@ const Login: FC = () => {
           placeholder='Password'
           type='password'
         />
-        <Button label='Submit' onClick={onSubmit} />
+        <Button label='Login' onClick={onSubmit} />
         {showError && <div>Enter username and password</div>}
       </div>
     </div>

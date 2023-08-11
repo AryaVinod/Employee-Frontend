@@ -11,6 +11,7 @@ const Sidebar: FC = () => {
         <div className='white'>
           <img className='people' src='assets/img/people.png' />
         </div>
+        <div className='text'>Employee List</div>
       </div>
     </div>
   );

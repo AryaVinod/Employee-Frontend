@@ -21,4 +21,22 @@
   background: transparent 0% 0% no-repeat padding-box;
   opacity: 1;
 }
+
+.left-container{
+  width: 50%;
+  height: 95vh;
+  background-color: #e6f7fd;
+  border-radius: 1%;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle{
+  border-radius: 50%;
+  height: 750px;
+  width: 750px;
+  border: 30px solid white;
+}
   

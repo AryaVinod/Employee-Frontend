@@ -3,4 +3,11 @@
     flex-direction: row;
     height: 100vh;
     width: 100%;
+    background-color: #FAFAFA;
+}
+
+.right-layout{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
 }

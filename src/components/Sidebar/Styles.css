@@ -15,6 +15,7 @@
     width: 285px;
     height: 60px;
     display: flex;
+    flex-direction: row;
 
     /* UI Properties */
 
@@ -55,4 +56,12 @@
     opacity: 1;
     margin-top: 15px;
     margin-left: 40px;
+}
+
+.text{
+    color: #FFFFFF;
+    width: 120px;
+    margin-left: 10px;
+    font: bold;
+    margin-top: 20px;
 }
