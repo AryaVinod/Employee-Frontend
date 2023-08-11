@@ -1,0 +1,23 @@
+.entry-div{
+    background-color: white;
+    margin-top: 20px;
+    width: 81.5vw ;
+    height: 55px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 19px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px #9D9D9D29;
+    display: flex;
+}
+
+.entry-div:hover{
+    background-color: rgb(216, 217, 218);
+}
+
+.entry{
+    /* flex-grow: 1; */
+    /* margin-right: 80px; */
+    width: 15%;
+    /* font-size: 10px; */
+}

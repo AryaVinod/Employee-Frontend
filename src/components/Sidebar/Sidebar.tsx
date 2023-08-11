@@ -5,11 +5,11 @@ const Sidebar: FC = () => {
   return (
     <div className='sidebar-container'>
       <div className='grey-box'>
-        <img className='logo' src='assets/img/kv-logo.png' />
+        <img className='logo' src='/assets/img/kv-logo.png' />
       </div>
       <div className='blue-box'>
         <div className='white'>
-          <img className='people' src='assets/img/people.png' />
+          <img className='people' src='/assets/img/people.png' />
         </div>
         <div className='text'>Employee List</div>
       </div>

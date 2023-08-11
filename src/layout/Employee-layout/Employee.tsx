@@ -2,18 +2,17 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import Header from '../../components/Header/Header';
 import { FC } from 'react';
 import './Styles.css';
-import SubHeader from '../../components/Sub-header/Sub-header';
 
-const Employee: FC = () => {
+const EmployeeLayout: FC = (props) => {
   return (
     <div className='emp-container'>
       <Sidebar />
       <div className='right-layout'>
         <Header />
-        <SubHeader label='Employee List' />
+        {props.children}
       </div>
     </div>
   );
 };
 
-export default Employee;
+export default EmployeeLayout;
