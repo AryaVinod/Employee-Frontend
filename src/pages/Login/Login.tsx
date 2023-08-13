@@ -23,7 +23,7 @@ const Login: FC = () => {
         {/* <img className='banner' src='assets/img/banner.png' /> */}
       </div>
       <div className='right-container'>
-        <img className='logo' src='assets/img/kv-logo.png' />
+        <img className='kv-logo' src='assets/img/kv-logo.png' />
         <Input
           label='Username'
           value={username}

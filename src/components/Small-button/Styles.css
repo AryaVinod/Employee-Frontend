@@ -1,0 +1,34 @@
+.blue-button{
+    top: 693px;
+    left: 1194px;
+    width: 240px;
+    height: 45px;
+    background: #03AEEE 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #B0E6FA;
+    border-radius: 3px;
+    opacity: 1;
+    text-align: center;
+    font: normal normal 600 16px/22px Nunito;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+.white-button{
+    top: 693px;
+    left: 1194px;
+    width: 240px;
+    height: 45px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #FCFCFC;
+    border-radius: 3px;
+    opacity: 1;
+    text-align: center;
+    font: normal normal 600 16px/22px Nunito;
+    letter-spacing: 0px;
+    color: #8A8C8F;
+    opacity: 1;
+    margin-top: 20px;
+    margin-right: 20px;
+}

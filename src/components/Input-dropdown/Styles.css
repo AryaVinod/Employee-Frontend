@@ -1,9 +1,9 @@
-.input{
+.input-dd{
     /* top: 497px; */
     width: 400px;
     height: 40px;
 
-    /* UI Properties */
+    background-color: white;
 
     border: 1px solid #B4B7BD;
     border-radius: 5px;

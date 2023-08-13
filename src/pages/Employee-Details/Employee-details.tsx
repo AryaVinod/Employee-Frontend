@@ -2,7 +2,7 @@ import { FC } from 'react';
 import './Styles.css';
 import EmployeeLayout from '../../layout/Employee-layout/Employee';
 import EmployeeField from '../../components/Employee-Fields/Employee-fields';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const data = [
   {
@@ -38,6 +38,7 @@ const data = [
 ];
 
 const EmployeeDetails: FC = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const emp = data.find((employee) => employee.id === Number(id));
 
@@ -46,7 +47,10 @@ const EmployeeDetails: FC = () => {
       <EmployeeLayout>
         <div className='details-subh'>
           <div className='details-subh-text'>Employee Details</div>
-          <button className='edit-employee-button'>
+          <button
+            className='edit-employee-button'
+            onClick={() => navigate(`/employees/${id}/edit`)}
+          >
             <div className='add-blue-plus'>
               <img className='add-white-plus' src='/assets/img/Edit.svg' />
             </div>

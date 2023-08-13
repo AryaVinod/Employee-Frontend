@@ -6,7 +6,7 @@ type InputPropTypes = {
   onChange: (evt) => void;
   label: string;
   placeholder: string;
-  type: 'text' | 'password';
+  type: 'text' | 'password' | 'address';
 };
 
 const Input: FC<InputPropTypes> = (props) => {
