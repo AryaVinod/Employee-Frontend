@@ -21,6 +21,7 @@
 
     background: #03AEEE 0% 0% no-repeat padding-box;
     border-radius: 50px 0px 0px 50px;
+    cursor: pointer;
 }
 
 .grey-box{
