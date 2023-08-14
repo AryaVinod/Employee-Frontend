@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import './Styles.css';
 
-type ButtonPropTypes = {
-  onClick: (evt) => void;
+export type ButtonPropTypes = {
+  onClick?: (evt) => void;
   label: string;
   color: 'blue' | 'white';
 };
@@ -13,7 +13,12 @@ const SmallButton: FC<ButtonPropTypes> = (props) => {
   return (
     <div>
       <div>
-        <button type='button' className={buttonColor} onClick={props.onClick}>
+        <button
+          type='button'
+          className={buttonColor}
+          onClick={props.onClick}
+          data-testid='small-button-test'
+        >
           {props.label}
         </button>
       </div>
