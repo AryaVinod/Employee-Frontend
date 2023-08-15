@@ -1,46 +1,17 @@
 import { FC } from 'react';
+import { useSelector } from 'react-redux';
 import './Styles.css';
 import EmployeeLayout from '../../layout/Employee-layout/Employee';
 import EmployeeField from '../../components/Employee-Fields/Employee-fields';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const data = [
-  {
-    id: 1,
-    name: 'Ashok',
-    joiningDate: '11/02/2012',
-    experience: 8,
-    role: 'admin',
-    address: {
-      addressLine1: 'Edachira',
-      addressLine2: 'Kakkanad',
-      city: 'Ernakulam',
-      state: 'Kerala',
-      country: 'India',
-      pincode: '682024'
-    }
-  },
-  {
-    id: 2,
-    name: 'Ashok',
-    joiningDate: '11/02/2012',
-    experience: 8,
-    role: 'admin',
-    address: {
-      addressLine1: 'Edachira',
-      addressLine2: 'Kakkanad',
-      city: 'Ernakulam',
-      state: 'Kerala',
-      country: 'India',
-      pincode: '682024'
-    }
-  }
-];
-
 const EmployeeDetails: FC = () => {
+  const employeesData = useSelector((state: any) => {
+    return state.employees;
+  });
   const navigate = useNavigate();
   const { id } = useParams();
-  const emp = data.find((employee) => employee.id === Number(id));
+  const emp = employeesData.find((employee) => employee.id === Number(id));
 
   return (
     <div>

@@ -4,47 +4,19 @@ import EmployeeLayout from '../../layout/Employee-layout/Employee';
 import TableTitle from '../../components/Table-title/Table-title';
 import TableEntry from '../../components/Table-Entry/Table-entry';
 import SubHeader from '../../components/Sub-header/Sub-header';
+import { useSelector } from 'react-redux';
 
 const Employee: FC = () => {
-  const data = [
-    {
-      id: 1,
-      name: 'Ashok',
-      joiningDate: '11/02/2012',
-      experience: 8,
-      role: 'admin',
-      address: {
-        addressLine1: 'Edachira',
-        addressLine2: 'Kakkanad',
-        city: 'Ernakulam',
-        state: 'Kerala',
-        country: 'India',
-        pincode: '682024'
-      }
-    },
-    {
-      id: 2,
-      name: 'Ashok',
-      joiningDate: '11/02/2012',
-      experience: 8,
-      role: 'admin',
-      address: {
-        addressLine1: 'Edachira',
-        addressLine2: 'Kakkanad',
-        city: 'Ernakulam',
-        state: 'Kerala',
-        country: 'India',
-        pincode: '682024'
-      }
-    }
-  ];
+  const employeesData = useSelector((state: any) => {
+    return state.employees;
+  });
 
   return (
     <div>
       <EmployeeLayout>
         <SubHeader label='Employee List' />
         <TableTitle />
-        {data.map((employee) => (
+        {employeesData.map((employee) => (
           <TableEntry
             key={employee.id}
             id={employee.id}

@@ -14,13 +14,9 @@ const InputDropDown: FC<InputPropTypes> = (props) => {
     <div>
       <label>{props.label}</label>
       <div>
-        <select className='input-dd'>
-          <option placeholder={props.placeholder} onChange={props.onChange} value={props.value}>
-            1
-          </option>
-          <option placeholder={props.placeholder} onChange={props.onChange} value={props.value}>
-            2
-          </option>
+        <select className='input-dd' onChange={props.onChange} value={props.value}>
+          <option>1</option>
+          <option>2</option>
         </select>
       </div>
     </div>

@@ -1,4 +1,5 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './Styles.css';
 import EmployeeLayout from '../../layout/Employee-layout/Employee';
 import Input from '../../components/Input/input';
@@ -9,14 +10,91 @@ import SmallButton from '../../components/Small-button/Small-button';
 const AddEmployee: FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [name, setName] = useState('');
+  const [name, setName] = useState(null);
   const [joiningDate, setJoiningDate] = useState('');
   const [experience, setExperience] = useState('');
   const [role, setRole] = useState('');
-  const [status, setStatus] = useState('');
-  const [address, setAddress] = useState('');
-  const [line1, setLine1] = useState('');
-  const [line2, setLine2] = useState('');
+  const [department, setDepartment] = useState('');
+  // const [status, setStatus] = useState('');
+  const [city, setCity] = useState('');
+  const [addressLine1, setLine1] = useState('');
+  const [addressLine2, setLine2] = useState('');
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = () => {
+    dispatch({
+      type: 'Employee:Create',
+      payload: {
+        employee: {
+          id: 3,
+          name,
+          joiningDate,
+          experience,
+          role,
+          address: {
+            addressLine1: addressLine1,
+            addressLine2: addressLine2,
+            city,
+            state: 'Kerala',
+            country: 'India',
+            pincode: '682024'
+          }
+        }
+      }
+    });
+  };
+
+  const handleEdit = (e, id) => {
+    e.stopPropagation();
+
+    if (id) {
+      const employeeToUpdate = employeesData.find((employee) => employee.id === Number(id));
+
+      if (employeeToUpdate) {
+        const updatedEmployee = {
+          id: employeeToUpdate.id,
+          name,
+          joiningDate,
+          experience,
+          role,
+          address: {
+            addressLine1,
+            addressLine2,
+            city,
+            state: 'Kerala',
+            country: 'India',
+            pincode: '682024'
+          }
+        };
+
+        dispatch({
+          type: 'Employee:Edit',
+          payload: {
+            employee: updatedEmployee
+          }
+        });
+      }
+    }
+  };
+
+  const employeesData = useSelector((state: any) => {
+    return state.employees;
+  });
+
+  useEffect(() => {
+    const emp = employeesData.find((employee) => employee.id === Number(id));
+
+    if (emp) {
+      setName(emp.name);
+      setJoiningDate(emp.joiningDate);
+      setRole(emp.role);
+      setExperience(emp.experience);
+      setLine1(emp.address.addressLine1);
+      setLine2(emp.address.addressLine2);
+      setCity(emp.address.city);
+    }
+  }, [id]);
 
   return (
     <div>
@@ -58,12 +136,12 @@ const AddEmployee: FC = () => {
               type='text'
             />
             <InputDropDown
-              label='Joining Date'
-              value={joiningDate}
+              label='Department'
+              value={department}
               onChange={function (evt: any) {
-                setJoiningDate(evt.target.value);
+                setDepartment(evt.target.value);
               }}
-              placeholder='Joining Date'
+              placeholder='Department'
               type='text'
             />
             <InputDropDown
@@ -75,41 +153,39 @@ const AddEmployee: FC = () => {
               placeholder='Role'
               type='text'
             />
-            <InputDropDown
+            <Input
               label='Status'
-              value={status}
-              onChange={function (evt: any) {
-                setStatus(evt.target.value);
-              }}
+              value='Active'
+              onChange={() => {}}
               placeholder='Status'
               type='text'
             />
             <div className='address-cont'>
               <Input
                 label='Address'
-                value={address}
-                onChange={function (evt: any) {
-                  setAddress(evt.target.value);
-                }}
-                placeholder='Address'
-                type='text'
-              />
-              <input
-                className='address-line'
-                value={line1}
+                value={addressLine1}
                 onChange={function (evt: any) {
                   setLine1(evt.target.value);
                 }}
-                placeholder='Line 1'
+                placeholder='Address Line 1'
                 type='text'
               />
               <input
                 className='address-line'
-                value={line2}
+                value={addressLine2}
                 onChange={function (evt: any) {
                   setLine2(evt.target.value);
                 }}
-                placeholder='Line 2'
+                placeholder='Address Line 2'
+                type='text'
+              />
+              <input
+                className='address-line'
+                value={city}
+                onChange={function (evt: any) {
+                  setCity(evt.target.value);
+                }}
+                placeholder='City'
                 type='text'
               />
             </div>
@@ -124,7 +200,11 @@ const AddEmployee: FC = () => {
             ) : null}
           </div>
           <div className='button-cont'>
-            <SmallButton label={id ? 'Save' : 'Create'} color='blue' onClick={() => {}} />
+            <SmallButton
+              label={id ? 'Save' : 'Create'}
+              color='blue'
+              onClick={id ? (e) => handleEdit(e, id) : handleSubmit}
+            />
             <SmallButton label='Cancel' color='white' onClick={() => navigate('/employees')} />
           </div>
         </form>
