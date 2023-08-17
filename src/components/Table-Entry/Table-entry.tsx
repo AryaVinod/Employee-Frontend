@@ -3,6 +3,7 @@ import './Styles.css';
 import Status from '../Status/Status';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { deleteEmployee } from '../../actions/employeeAction';
 
 type EntryPropTypes = {
   key: number;
@@ -19,14 +20,7 @@ const TableEntry: FC<EntryPropTypes> = (props) => {
 
   const handleDelete = (e, id) => {
     e.stopPropagation();
-    dispatch({
-      type: 'Employee:Delete',
-      payload: {
-        employee: {
-          id
-        }
-      }
-    });
+    dispatch(deleteEmployee({ employee: { id } }));
   };
 
   const handleProp = (e) => {

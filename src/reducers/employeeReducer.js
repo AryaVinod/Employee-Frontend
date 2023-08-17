@@ -1,3 +1,6 @@
+import { editEmployee, addEmployee, deleteEmployee } from '../actions/employeeAction';
+import { createReducer } from '@reduxjs/toolkit';
+
 const initialState = [
   {
     id: 1,
@@ -31,31 +34,55 @@ const initialState = [
   }
 ];
 
-const employeeReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'Employee:Create': {
-      const newState = [...state, action.payload.employee];
+// as Array<Employee>
+const employeeReducer = createReducer(initialState, (builder) => {
+  builder.addCase(addEmployee, (state, action) => {
+    const newState = [...state, action.payload.employee];
 
-      return newState;
-    }
+    return newState;
+  });
 
-    case 'Employee:Delete': {
-      const newState = state.filter((employee) => employee.id != action.payload.employee.id);
+  builder.addCase(editEmployee, (state, action) => {
+    const updatedEmployee = action.payload.employee;
+    const newState = state.map((employee) =>
+      employee.id === updatedEmployee.id ? updatedEmployee : employee
+    );
 
-      return newState;
-    }
+    return newState;
+  });
 
-    case 'Employee:Edit': {
-      const updatedEmployee = action.payload.employee;
-      const newState = state.map((employee) =>
-        employee.id === updatedEmployee.id ? updatedEmployee : employee
-      );
+  builder.addCase(deleteEmployee, (state, action) => {
+    const newState = state.filter((employee) => employee.id != action.payload.employee.id);
 
-      return newState;
-    }
-    default:
-      return state;
-  }
-};
+    return newState;
+  });
+});
+
+// const employeeReducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case 'Employee:Create': {
+//       const newState = [...state, action.payload.employee];
+
+//       return newState;
+//     }
+
+//     case 'Employee:Delete': {
+//       const newState = state.filter((employee) => employee.id != action.payload.employee.id);
+
+//       return newState;
+//     }
+
+//     case 'Employee:Edit': {
+//       const updatedEmployee = action.payload.employee;
+//       const newState = state.map((employee) =>
+//         employee.id === updatedEmployee.id ? updatedEmployee : employee
+//       );
+
+//       return newState;
+//     }
+//     default:
+//       return state;
+//   }
+// };
 
 export default employeeReducer;

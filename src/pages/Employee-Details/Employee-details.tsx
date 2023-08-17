@@ -1,17 +1,25 @@
 import { FC } from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import './Styles.css';
 import EmployeeLayout from '../../layout/Employee-layout/Employee';
 import EmployeeField from '../../components/Employee-Fields/Employee-fields';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useGetEmployeeDetailsQuery } from '../Employee/api';
 
 const EmployeeDetails: FC = () => {
-  const employeesData = useSelector((state: any) => {
-    return state.employees;
-  });
+  // const employeesData = useSelector((state: any) => {
+  //   return state.employees;
+  // });
+
   const navigate = useNavigate();
   const { id } = useParams();
-  const emp = employeesData.find((employee) => employee.id === Number(id));
+  const { data } = useGetEmployeeDetailsQuery(id);
+
+  console.log(data);
+
+  const emp = data?.data || {};
+
+  console.log(data);
 
   return (
     <div>
@@ -36,7 +44,7 @@ const EmployeeDetails: FC = () => {
           <EmployeeField label='Status' value={null} />
           <EmployeeField
             label='Address'
-            value={`${emp.address.addressLine1}, ${emp.address.addressLine2}, ${emp.address.city}, ${emp.address.state}, ${emp.address.country}, ${emp.address.pincode}`}
+            value={`${emp.address?.line1}, ${emp.address?.line2}, ${emp.address?.city}, ${emp.address?.state}, ${emp.address?.country}, ${emp.address?.pincode}`}
           />
           <EmployeeField label='Employee ID' value={emp.id} />
         </div>

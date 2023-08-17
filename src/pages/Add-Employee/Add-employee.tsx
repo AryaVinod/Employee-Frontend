@@ -6,6 +6,7 @@ import Input from '../../components/Input/input';
 import InputDropDown from '../../components/Input-dropdown/Input-dropdown';
 import { useNavigate, useParams } from 'react-router-dom';
 import SmallButton from '../../components/Small-button/Small-button';
+import { editEmployee, addEmployee } from '../../actions/employeeAction';
 
 const AddEmployee: FC = () => {
   const { id } = useParams();
@@ -23,9 +24,8 @@ const AddEmployee: FC = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    dispatch({
-      type: 'Employee:Create',
-      payload: {
+    dispatch(
+      addEmployee({
         employee: {
           id: 3,
           name,
@@ -41,8 +41,8 @@ const AddEmployee: FC = () => {
             pincode: '682024'
           }
         }
-      }
-    });
+      })
+    );
   };
 
   const handleEdit = (e, id) => {
@@ -68,12 +68,7 @@ const AddEmployee: FC = () => {
           }
         };
 
-        dispatch({
-          type: 'Employee:Edit',
-          payload: {
-            employee: updatedEmployee
-          }
-        });
+        dispatch(editEmployee({ employee: updatedEmployee }));
       }
     }
   };

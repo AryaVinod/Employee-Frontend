@@ -4,19 +4,24 @@ import EmployeeLayout from '../../layout/Employee-layout/Employee';
 import TableTitle from '../../components/Table-title/Table-title';
 import TableEntry from '../../components/Table-Entry/Table-entry';
 import SubHeader from '../../components/Sub-header/Sub-header';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
+import { useGetEmployeeListQuery } from './api';
 
 const Employee: FC = () => {
-  const employeesData = useSelector((state: any) => {
-    return state.employees;
-  });
+  // const employeesData = useSelector((state: any) => {
+  //   return state.employees;
+  // });
+
+  const { data } = useGetEmployeeListQuery();
+
+  console.log(data);
 
   return (
     <div>
       <EmployeeLayout>
         <SubHeader label='Employee List' />
         <TableTitle />
-        {employeesData.map((employee) => (
+        {data?.data?.map((employee) => (
           <TableEntry
             key={employee.id}
             id={employee.id}
