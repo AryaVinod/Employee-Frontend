@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import Input from '../../components/Input/input';
 import { useNavigate } from 'react-router-dom';
 import { FC, useEffect, useState } from 'react';
@@ -15,16 +16,17 @@ const Login: FC = () => {
   const [login, { data, isSuccess }] = useLoginMutation();
 
   useEffect(() => {
-    if (data && isSuccess) localStorage.setItem('token', data.data.token);
+    if (data && isSuccess) {
+      localStorage.setItem('token', data.data.token);
+      localStorage.setItem('user_id', data.data.employee.id);
+      localStorage.setItem('role', data.data.employee.role);
+      navigate('/employees');
+    }
   }, [data, isSuccess]);
 
   const onSubmit = () => {
-    if (username && password) {
-      login({ username, password });
-      navigate('/employees');
-    } else {
-      setError(true);
-    }
+    if (username && password) login({ username, password });
+    else setError(true);
   };
 
   return (

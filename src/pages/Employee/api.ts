@@ -19,12 +19,24 @@ import baseApi from '../../services';
 export const employeeApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getEmployeeList: builder.query<any, void>({
-      query: () => '/employees'
+      query: () => '/employees',
+      providesTags: ['Employee']
     }),
     getEmployeeDetails: builder.query<any, string>({
       query: (id) => `/employees/${id}`
+    }),
+    getDepartments: builder.query<any, void>({
+      query: () => `/departments`
+    }),
+    getRoles: builder.query<any, void>({
+      query: () => `/roles`
     })
   })
 });
 
-export const { useGetEmployeeListQuery, useGetEmployeeDetailsQuery } = employeeApi;
+export const {
+  useGetEmployeeListQuery,
+  useGetEmployeeDetailsQuery,
+  useGetDepartmentsQuery,
+  useGetRolesQuery
+} = employeeApi;

@@ -15,8 +15,6 @@ const EmployeeDetails: FC = () => {
   const { id } = useParams();
   const { data } = useGetEmployeeDetailsQuery(id);
 
-  console.log(data);
-
   const emp = data?.data || {};
 
   console.log(data);
