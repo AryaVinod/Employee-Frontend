@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import './Styles.css';
 
-type InputPropTypes = {
+export type InputPropTypes = {
   value: string;
-  onChange: (evt) => void;
+  onChange?: (evt) => void;
   label: string;
   placeholder: string;
   type: 'text';
@@ -13,7 +13,7 @@ type InputPropTypes = {
 const InputDropDown: FC<InputPropTypes> = (props) => {
   return (
     <div>
-      <label>{props.label}</label>
+      <label data-testid='input-test'>{props.label}</label>
       <div>
         <select className='input-dd' onChange={props.onChange} value={props.value}>
           <option>Choose {props.label}</option>

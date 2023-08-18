@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import './Styles.css';
 
-type InputPropTypes = {
+export type InputPropTypes = {
   value: string;
-  onChange: (evt) => void;
+  onChange?: (evt) => void;
   label: string;
   placeholder: string;
   type: 'text' | 'password' | 'address';
@@ -20,6 +20,7 @@ const Input: FC<InputPropTypes> = (props) => {
           placeholder={props.placeholder}
           onChange={props.onChange}
           value={props.value}
+          data-testid='input-test'
         ></input>
       </div>
     </div>

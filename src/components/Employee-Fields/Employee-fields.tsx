@@ -2,7 +2,7 @@ import { FC } from 'react';
 import './Styles.css';
 import Status from '../Status/Status';
 
-type FieldPropTypes = {
+export type FieldPropTypes = {
   label: string;
   value: string | number | null;
 };
